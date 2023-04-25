@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <title>Generador d'enllaços | Departament d'Interior</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aquí trobaràs la informació necessaria sobre les fases i cadascun dels procediments que existeixen a la implantació d'un tràmit digital.">
+    <meta name="author" content="Departament d'Interior, Generalitat de Catalunya">
+    <link rel="shortcut icon" href="../assets/img/generalitat.jpg">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Inici - Tramitació Digital" />
+    <meta property="og:description" content="Aquí trobaràs la informació necessaria sobre les fases i cadascun dels procediments que existeixen a la implantació d'un tràmit digital." />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome JS-->
+    <script defer src="../assets/fontawesome/js/all.min.js"></script>
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="../assets/css/theme.css">
+    <link id="theme-style" rel="stylesheet" href="../assets/css/custom.css">
+
+    <!-- TinyMCE HTML Editor -->
+    <script src="https://cdn.tiny.cloud/1/q8v817hd1zvat2hrfue2avaeh4ymh9dxzuldmhtvxopxbxey/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    
+
+</head>
+<body>
+    <header class="header fixed-top">
+    <div class="branding docs-branding">
+        <div class="container-fluid position-relative py-2">
+            <div class="docs-logo-wrapper">
+                <div class="site-logo"><a class="navbar-brand" href="../index.html"><img class="logo-icon me-2" src="../assets/img/interior.gif" alt="logo"></a></div>
+            </div>
+            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+
+                <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+                    <li class="list-inline-item"><a href="https://twitter.com/interiorcat"><i class="fab fa-twitter fa-fw"></i></a></li>
+                    <li class="list-inline-item"><a href="https://instagram.com/interiorcat"><i class="fab fa-instagram fa-fw"></i></a></li>
+                    <li class="list-inline-item"><a href="https://facebook.com/interiorcat"><i class="fab fa-facebook fa-fw"></i></a></li>
+                </ul>
+                <a href="../index.html" class="btn btn-primary d-none d-lg-flex" style="background-color: #000;">General</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <!-- Enllaços -->
+        <div class="page-content">
+            <div class="container">
+                <div class="docs-overview py-4">
+                    <div class="row justify-content-center" style="width: 100%;">
+                        <div class="col-12 col-lg-11 py-3">
+                            <div class="row">
+                                <div class="col-12 mb-4">
+                                    <h2>Generació d'enllaços</h2>
+                                </div>
+                                <div class="col-12 col-lg-6 mb-5 p-2">
+
+                                    <div class="form p-4" style="min-height: 300px; border: 1px solid #AAAAAA !important; border-radius: 8px">
+                                        <div class="mb-3">
+                                            <label class="text-bold" for="codi">Codi:</label>
+                                            <input class="form-control" type="text" name="codi" id="codi" placeholder="SGR022SOLC">
+                                        </div>
+                                        <div>
+                                            <a href="#" id="entorn-conf" target="_blank" class="btn btn-primary mt-2" style="width: 100%;">Entorn CONF</a>
+                                            <a href="#" id="entorn-cepre" target="_blank" class="btn btn-primary mt-2" style="width: 100%;">Entorn CE PRE</a>
+                                            <a href="#" id="entorn-pro" target="_blank" class="btn btn-primary mt-2" style="width: 100%;">Entorn PRO</a>
+                                            <a href="#" id="entorn-eaconf" target="_blank" class="btn btn-success mt-2" style="width: 100%;">EA CONF</a>
+                                            <a href="#" id="entorn-eapro" target="_blank" class="btn btn-success mt-2" style="width: 100%;">EA PRO</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-12 col-lg-6 mb-5 p-2">
+
+                                    <div class="form p-4" style="border: 1px solid #AAAAAA !important; border-radius: 8px">
+                                        <div class="mb-3">
+                                            <label class="text-bold" for="formulari">Nom de formulari:</label>
+                                            <input type="text" name="formulari" id="formulari" class="form-control" placeholder="SGR022-SOLC-202301">
+                                        </div>
+                                        <div class="mb-3 mt-2">
+                                            <label class="text-bold" for="ubicacio">Ubicació:</label><br/>
+                                            <select class="form-control" style="padding: 0; padding-left: 0.75rem;" name="ubicacio" id="ubicacio">
+                                                <option value="int">int</option>
+                                                <option value="int/Recursos">int/Recursos</option>
+                                                <option value="int/SGEPAR">int/SGEPAR</option>
+                                                <option value="int/antics">int/Antics</option>
+                                                <option value="int/SGSI">int/SGSI</option>
+                                                <option value="int/esquema">int/esquema</option>
+                                                <option value="int/copiesseguretat">int/copiesseguretat</option>
+                                                <option value="int/proves">int/PROVES</option>
+                                                <option value="int/imatges">int/imatges</option>
+                                                <option value="int/fragments_espec-fics">int/fragments_especifics</option>
+                                                <option value="int/fragments">int/fragments</option>
+
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <a href="#" target="_blank" class="btn btn-primary mt-2" id="aem" style="width: 100%;">AEM</a>
+                                            <a href="#" target="_blank" class="btn btn-primary mt-2" id="diccionari" style="width: 100%;">Diccionari</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<footer class="footer mt-5">
+
+<div class="footer-bottom text-center py-5">
+
+    <ul class="social-list list-unstyled pb-4 mb-0">
+        <li class="list-inline-item"><a href="https://twitter.com/interiorcat"><i class="fab fa-twitter fa-fw"></i></a></li>
+        <li class="list-inline-item"><a href="https://instagram.com/interiorcat"><i class="fab fa-instagram fa-fw"></i></a></li>
+        <li class="list-inline-item"><a href="https://facebook.com/interiorcat"><i class="fab fa-facebook fa-fw"></i></a></li>
+</ul>
+
+    <small class="copyright">Desenvolupat per <a class="theme-link" href="http://gabi.work/" target="_blank">Gabriel Franco</a>.<br/>2023 &copy; Generalitat de Catalunya</small>
+
+
+</div>
+
+</footer>
+
+<!-- Javascript -->
+<script src="../assets/js/generador.js"></script>
+
+</body>
+</html>
+

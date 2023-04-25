@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <title>Estatus del representa | Departament d'Interior</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estatus del representa a la tramitació digital.">
+    <meta name="author" content="Departament d'Interior, Generalitat de Catalunya">
+    <link rel="shortcut icon" href="assets/img/generalitat.jpg">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Inici - Tramitació Digital" />
+    <meta property="og:description" content="Estatus del representa a la tramitació digital." />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- FontAwesome JS-->
+    <script defer src="../assets/fontawesome/js/all.min.js"></script>
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="../assets/css/theme.css">
+    <link id="theme-style" rel="stylesheet" href="../assets/css/custom.css">
+
+    <!-- TinyMCE HTML Editor -->
+    <script src="https://cdn.tiny.cloud/1/q8v817hd1zvat2hrfue2avaeh4ymh9dxzuldmhtvxopxbxey/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+</head>
+<body>
+    <header class="header fixed-top">
+    <div class="branding docs-branding">
+        <div class="container-fluid position-relative py-2">
+            <div class="docs-logo-wrapper">
+                <div class="site-logo"><a class="navbar-brand" href="../index.html"><img class="logo-icon me-2" src="../assets/img/interior.gif" alt="logo"></a></div>
+            </div>
+            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+
+                <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+                    <li class="list-inline-item"><a href="https://twitter.com/interiorcat"><i class="fab fa-twitter fa-fw"></i></a></li>
+                    <li class="list-inline-item"><a href="https://instagram.com/interiorcat"><i class="fab fa-instagram fa-fw"></i></a></li>
+                    <li class="list-inline-item"><a href="https://facebook.com/interiorcat"><i class="fab fa-facebook fa-fw"></i></a></li>
+                </ul>
+                <a href="../index.html" class="btn btn-primary d-none d-lg-flex" style="background-color: #000;">General</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <!-- Enllaços -->
+        <div class="page-content">
+            <div class="container">
+                <div class="docs-overview py-4">
+                    <div class="row justify-content-center" style="width: 100%;">
+                        <div class="col-12 col-lg-11 py-3">
+                            <div class="row">
+                                <div class="col-12 mb-4">
+                                    <h2>Lectura del Representa</h2>
+                                </div>
+                                <div class="col-12" id="contingut">
+
+                                    <form id="formulari" name="formulari" method="POST" action="#">
+                                        <p><input type="file" id="xml" name="xml" required/></p>
+                                        <p><a id="boto" class="btn btn-success" href="#">Veure resultat</a></p>
+                                    </form>
+
+                                </div>
+                                <script>
+                                    var readXml=null;
+                                    $('#boto').click(function(event) {
+                                        event.preventDefault();
+
+                                        // Aconseguir fitxer
+                                        var selectedFile = document.getElementById('xml').files[0];
+
+                                        // Llegir fitxer
+                                        var reader = new FileReader();
+                                        reader.onload = function(e) {
+                                            readXml = e.target.result;
+                                            var parser = new DOMParser();
+                                            var doc = parser.parseFromString(readXml, "application/xml");
+                                            console.log(doc);
+
+                                            if( doc.getElementsByTagName('ns4:codi')[0] ) {
+
+                                                // Utilitza ns4
+                                                codi = doc.getElementsByTagName('ns4:codi')[0].innerHTML;
+                                                descripcio = doc.getElementsByTagName('ns4:descripcio')[0].innerHTML;
+                                                tramit = doc.getElementsByTagName('ns4:codi')[2].innerHTML;
+                                                console.log(tramit);
+
+                                            } else {
+
+                                                // Utilitza ns9
+                                                codi = doc.getElementsByTagName('ns9:codi')[0].innerHTML;
+                                                descripcio = doc.getElementsByTagName('ns9:descripcio')[0].innerHTML;
+                                                tramit = doc.getElementsByTagName('ns9:codi')[2].innerHTML;
+
+                                            }
+
+                                            // Ensenyar si error o es correcte
+                                            if(codi != '0') {
+
+                                                missatgeError = `
+                                                    <div class="row justify-content-center" style="width: 100%;">
+                                                        <div class="col-12 col-lg-6 py-3">
+                                                            <div class="card text-center">
+                                                                <div class="card-header">
+                                                                    <h5 class="card-title pt-2 text-danger">Error al representa!</h5>
+                                                                </div>
+                                                                <div class="card-body p-5">
+                                                                <p class="card-text">${descripcio}<br/><br/>Codi: ${codi}</p>
+                                                                </div>
+                                                                <div class="card-footer text-muted">
+                                                                    Tràmit: ${tramit}
+                                                                </div>
+                                                            </div>
+                                                            <a href="./index.html" class="btn btn-primary" id="tornar">Fer un altre</a>
+                                                        </div>
+                                                    </div>`;
+
+                                                document.getElementById('contingut').innerHTML = missatgeError;
+
+                                            } else {
+                                                missatgeConfirmacio = `
+                                                    <div class="row justify-content-center" style="width: 100%;">
+                                                        <div class="col-12 col-lg-6 py-3">
+                                                            <div class="card text-center">
+                                                                <div class="card-header">
+                                                                    <h5 class="card-title pt-2 text-success">Tot correcte!</h5>
+                                                                </div>
+                                                                <div class="card-body p-5">
+                                                                    <p class="card-text">${descripcio}<br/><br/>Codi: ${codi}</p>
+                                                                </div>
+                                                                <div class="card-footer text-muted">
+                                                                    Tràmit: ${tramit}
+                                                                </div>
+                                                            </div>
+                                                            <a href="./index.html" class="btn btn-primary" id="tornar">Fer un altre</a>
+                                                        </div>
+                                                    </div>`;
+
+                                                document.getElementById('contingut').innerHTML = missatgeConfirmacio;
+                                            }
+
+
+
+
+                                        }
+                                        reader.readAsText(selectedFile);
+                                    });
+
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<footer class="footer mt-5">
+
+<div class="footer-bottom text-center py-5">
+
+    <ul class="social-list list-unstyled pb-4 mb-0">
+        <li class="list-inline-item"><a href="https://twitter.com/interiorcat"><i class="fab fa-twitter fa-fw"></i></a></li>
+        <li class="list-inline-item"><a href="https://instagram.com/interiorcat"><i class="fab fa-instagram fa-fw"></i></a></li>
+        <li class="list-inline-item"><a href="https://facebook.com/interiorcat"><i class="fab fa-facebook fa-fw"></i></a></li>
+</ul>
+
+    <small class="copyright">Desenvolupat per <a class="theme-link" href="http://gabi.work/" target="_blank">Gabriel Franco</a>.<br/>2023 &copy; Generalitat de Catalunya</small>
+
+
+</div>
+
+</footer>
+
+<!-- Javascript -->
+<script src="../assets/js/representa.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap');
+
+body { 
+    font-family: 'Inter' !important;
+}
+
+img.logo-icon {
+    width: 200px;
+}
+button:focus {
+    outline:0 !important;
+}
+
+#app-toolbar {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 9999;
+    opacity: 0.9;
+}
+
+#app-toolbar .glyphicon {
+    font-size: small;
+    margin-right: 2px;
+}
+
+#editor {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+#main-body {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
